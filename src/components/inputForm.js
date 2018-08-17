@@ -11,15 +11,15 @@ export default class InputForm extends PureComponent {
   handleSubmit = e => {
     e.preventDefault();
 
-    console.log("aaaaa!");
+    console.log("this is from the state", this.state);
   };
 
-  handleChange = event => {
+  handleChange = e => {
     console.log(this.state);
-    const { name, value } = event.target;
+    const { name, value } = e.target;
 
     this.setState({
-      [name]: value
+      [e.target.name]: e.target.value
     });
   };
 
@@ -37,9 +37,9 @@ export default class InputForm extends PureComponent {
           <br />
           country:
           <input
-            name="lastName"
-            placeholder="lastName"
-            value={this.state.lastName}
+            name="country"
+            placeholder="country"
+            value={this.state.country}
             onChange={this.handleInputChange}
           />
           <button type="submit">get wheater</button>
