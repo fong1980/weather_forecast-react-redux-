@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import InputForm from "./components/inputForm";
+import DisplayWeather from "./components/displayWeather";
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
         <div>
           <InputForm />
         </div>
+        <DisplayWeather />
       </div>
     );
   }

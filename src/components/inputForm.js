@@ -51,11 +51,7 @@ class InputForm extends PureComponent {
   }
 }
 
-const mapStateToProps = state => ({
-  authenticated: state.currentUser !== null,
-  users: state.users === null ? null : state.users,
-  batchs: state.batchs
-});
+const mapStateToProps = state => ({});
 
 export default connect(
   mapStateToProps,
