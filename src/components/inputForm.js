@@ -12,6 +12,7 @@ class InputForm extends PureComponent {
 
   handleSubmit = e => {
     e.preventDefault();
+
     this.props.getWeather(this.state);
     console.log("this is from the state", this.state);
   };
@@ -43,7 +44,7 @@ class InputForm extends PureComponent {
             value={this.state.country}
             onChange={this.handleInputChange}
           />
-          <button type="submit">get wheater</button>
+          <button type="submit">get weather</button>
         </div>
       </form>
     );
