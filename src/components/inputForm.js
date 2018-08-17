@@ -1,6 +1,8 @@
 import React, { PureComponent } from "react";
+import { getWeather } from "../actions/weather";
+import { connect } from "react-redux";
 
-export default class InputForm extends PureComponent {
+class InputForm extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
@@ -10,7 +12,7 @@ export default class InputForm extends PureComponent {
 
   handleSubmit = e => {
     e.preventDefault();
-
+    this.props.getWeather(this.state);
     console.log("this is from the state", this.state);
   };
 
@@ -34,7 +36,6 @@ export default class InputForm extends PureComponent {
             value={this.state.city}
             onChange={this.handleInputChange}
           />
-          <br />
           country:
           <input
             name="country"
@@ -48,3 +49,14 @@ export default class InputForm extends PureComponent {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  authenticated: state.currentUser !== null,
+  users: state.users === null ? null : state.users,
+  batchs: state.batchs
+});
+
+export default connect(
+  mapStateToProps,
+  { getWeather }
+)(InputForm);
