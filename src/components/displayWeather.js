@@ -14,14 +14,22 @@ class DisplayWeather extends PureComponent {
       const forecastDate = item.dt_txt.substr(0, 10);
       // console.log("forecastdate", forecastDate);
       list[forecastDate] = list[forecastDate] || [];
+
       list[forecastDate].push(item);
+      // console.log(list, "--");
 
       return list;
     }, {});
   };
 
+  _Get5Days = data => {
+    const a = data.length > 5 ? data.slice(0, 5) : data;
+    console.log(a, "get days");
+    return a;
+  };
+
   render() {
-    const eenArray = ["a", "b"];
+    var eenArray = ["a", "b"]; // to test, cleanup later
     return (
       <div>
         {!this.props.weather && <div>please select a city</div>}
@@ -29,15 +37,17 @@ class DisplayWeather extends PureComponent {
         {this.props.weather && (
           <div className="main display-weather">
             {console.log(
-              "test",
-              Object.values(this._groupByDays(this.props.weather.list))
+              this._Get5Days(
+                Object.values(this._groupByDays(this.props.weather.list))
+              )
             )}
+
             <div className="city-info">
               weather in {this.props.weather.city.name},
               {this.props.weather.city.country}
             </div>
             {Object.values(this._groupByDays(this.props.weather.list)).map(
-              (days, i) => console.log("ben ik er?")
+              (days, i) => console.log(i, "dit is i")
             )}
           </div>
         )}
