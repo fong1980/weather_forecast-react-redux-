@@ -8,24 +8,19 @@ class DisplayWeather extends PureComponent {
     // console.log("mounted", this.props.weather);
   }
 
-  _groupByDays = data => {
-    // console.log("data:",data)
-    return data.reduce((list, item) => {
-      const forecastDate = item.dt_txt.substr(0, 10);
-      // console.log("forecastdate", forecastDate);
-      list[forecastDate] = list[forecastDate] || [];
+  _groupBy5Days = data => {
+    const days = Object.values(
+      data.reduce((list, item) => {
+        const forecastDate = item.dt_txt.substr(0, 10);
+        list[forecastDate] = list[forecastDate] || [];
+        list[forecastDate].push(item);
+        return list;
+      }, {})
+    );
+    const fiveDays = days.length > 5 ? days.slice(0, 5) : days;
+    // console.log(fiveDays, "-------");
 
-      list[forecastDate].push(item);
-      // console.log(list, "--");
-
-      return list;
-    }, {});
-  };
-
-  _Get5Days = data => {
-    const a = data.length > 5 ? data.slice(0, 5) : data;
-    console.log(a, "get days");
-    return a;
+    return fiveDays;
   };
 
   render() {
@@ -36,18 +31,12 @@ class DisplayWeather extends PureComponent {
 
         {this.props.weather && (
           <div className="main display-weather">
-            {console.log(
-              this._Get5Days(
-                Object.values(this._groupByDays(this.props.weather.list))
-              )
-            )}
-
             <div className="city-info">
               weather in {this.props.weather.city.name},
               {this.props.weather.city.country}
             </div>
-            {Object.values(this._groupByDays(this.props.weather.list)).map(
-              (days, i) => console.log(i, "dit is i")
+            {this._groupBy5Days(this.props.weather.list).map((days, i) =>
+              console.log(days, "dit is i")
             )}
           </div>
         )}
