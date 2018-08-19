@@ -1,18 +1,18 @@
 .day {
-  border-color: black;
-  border: 1px;
-  border-style: solid;
+  margin: 100;
 }
 
 .hours {
   justify-content: space-between;
 
-  margin: 0 5px;
+  margin: 0 0px;
   margin-top: 50;
   align-items: center;
   display: flex; /* or inline-flex */
   flex-direction: row;
-  border-color: black;
-  border: 2px;
-  border-style: solid;
+}
+.main-display-weather {
+  margin: 90;
+  /* border: solid; */
+  /* background-color: gray; */
 }

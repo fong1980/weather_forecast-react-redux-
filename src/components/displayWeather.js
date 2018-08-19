@@ -1,6 +1,9 @@
 import React, { PureComponent } from "react";
 import { getWeather } from "../actions/weather";
 import { connect } from "react-redux";
+import { Card, Paper, withStyles, Slide } from "@material-ui/core";
+
+const styles = () => ({});
 
 class DisplayWeather extends PureComponent {
   componentDidMount() {
@@ -32,12 +35,13 @@ class DisplayWeather extends PureComponent {
 
   render() {
     var eenArray = ["a", "b"]; // to test, cleanup later
+
     return (
       <div>
         {!this.props.weather && <div>please select a city</div>}
 
         {this.props.weather && (
-          <div className="main display-weather">
+          <div className="main-display-weather">
             <div className="city-info">
               weather in {this.props.weather.city.name},
               {this.props.weather.city.country}
@@ -50,20 +54,24 @@ class DisplayWeather extends PureComponent {
               <div className="day">
                 -------------
                 {day[0].dt_txt.substr(0, 10)}
-                <div className="hours">
+                <Paper className="hours">
                   {day.map((x, ii) => (
                     <div className="per-hour">
-                      <br />
-                      Time:
-                      {x.dt_txt.substr(10, 13)}
-                      <br />
-                      Condition: {x.weather[0].main}
-                      <br />
-                      Temp: {this._KelvinToCelsius(x.main.temp)}
-                      <br />
+                      <Slide in={true} enter={8000}>
+                        <Card>
+                          <br />
+                          Time:
+                          {x.dt_txt.substr(10, 13)}
+                          <br />
+                          Condition: {x.weather[0].main}
+                          <br />
+                          Temp: {this._KelvinToCelsius(x.main.temp)}
+                          <br />
+                        </Card>
+                      </Slide>
                     </div>
                   ))}
-                </div>
+                </Paper>
                 <br />
               </div>
             ))}
@@ -81,4 +89,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { getWeather }
-)(DisplayWeather);
+)(withStyles(styles)(DisplayWeather));
