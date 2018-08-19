@@ -23,6 +23,13 @@ class DisplayWeather extends PureComponent {
     return fiveDays;
   };
 
+  _KelvinToCelsius = kelvin => {
+    const a = kelvin - 273.15;
+    Math.round(a);
+    // const a = (Kelvin - 32) / 1.8;
+    return Math.round(a);
+  };
+
   render() {
     var eenArray = ["a", "b"]; // to test, cleanup later
     return (
@@ -35,9 +42,31 @@ class DisplayWeather extends PureComponent {
               weather in {this.props.weather.city.name},
               {this.props.weather.city.country}
             </div>
-            {this._groupBy5Days(this.props.weather.list).map((days, i) =>
-              console.log(days, "dit is i")
+            {console.log(
+              this._groupBy5Days(this.props.weather.list)[0],
+              "adsadf"
             )}
+            {this._groupBy5Days(this.props.weather.list).map((day, i) => (
+              <div className="day">
+                -------------
+                {day[0].dt_txt.substr(0, 10)}
+                <div className="hours">
+                  {day.map((x, ii) => (
+                    <div className="per-hour">
+                      <br />
+                      Time:
+                      {x.dt_txt.substr(10, 13)}
+                      <br />
+                      Condition: {x.weather[0].main}
+                      <br />
+                      Temp: {this._KelvinToCelsius(x.main.temp)}
+                      <br />
+                    </div>
+                  ))}
+                </div>
+                <br />
+              </div>
+            ))}
           </div>
         )}
       </div>
