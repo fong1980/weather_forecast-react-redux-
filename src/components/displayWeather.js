@@ -37,11 +37,11 @@ class DisplayWeather extends PureComponent {
       <div>
         {!this.props.weather && <div>please select a city</div>}
 
-        {this.props.weather && (
+        {this.props.weather.city && (
           <div className="main-display-weather">
             <div className="city-info">
               weather in {this.props.weather.city.name},
-              {this.props.weather.city.country}
+              {/* {this.props.weather.city.country} */}
             </div>
             {console.log(
               this._groupBy5Days(this.props.weather.list)[1],
