@@ -4,6 +4,7 @@ import "./App.css";
 import InputForm from "./components/inputForm";
 import DisplayWeather from "./components/displayWeather";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import DisplayWeather1 from "./components/displayWeather1";
 
 class App extends Component {
   render() {
@@ -16,7 +17,8 @@ class App extends Component {
           <div>
             <InputForm />
           </div>
-          <DisplayWeather />
+          {/* <DisplayWeather /> */}
+          <DisplayWeather1 />
         </div>
       </MuiThemeProvider>
     );

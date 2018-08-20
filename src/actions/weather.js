@@ -12,9 +12,9 @@ export const getWeather = cityCountry => (dispatch, getState) => {
   let city;
   let country;
   if (!cityCountry) {
-    city = "amsterdam";
-    country = "nl";
-    console.log("test");
+    city = "";
+    country = "";
+    console.log("state is empty");
   } else {
     console.log(city, "-----");
     city = cityCountry.city; //"amsterdam";
@@ -31,7 +31,7 @@ export const getWeather = cityCountry => (dispatch, getState) => {
           payload: response.body
         })
       )
-      .catch(err => alert(err));
+      .catch(err => alert("No such city or country, try again"));
   }
 };
 

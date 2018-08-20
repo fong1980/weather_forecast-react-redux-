@@ -4,9 +4,12 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^1.5.0",
+    "chart.js": "^2.7.2",
     "material-ui": "^1.0.0-beta.47",
     "react": "^16.4.2",
+    "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.4.2",
+    "react-geosuggest": "^2.8.0",
     "react-scripts": "1.1.4",
     "redux-thunk": "^2.3.0",
     "superagent": "^3.8.3"

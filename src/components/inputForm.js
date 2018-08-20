@@ -7,7 +7,7 @@ import TextField from "material-ui/TextField";
 class InputForm extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = { city: "amsterdam", country: "nl" };
+    this.state = { city: "Amsterdam", country: "nl" };
     this.handleInputChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
