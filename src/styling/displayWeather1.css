@@ -1,0 +1,39 @@
+.weatherList {
+  border: solid;
+  color: black;
+  width: 80%;
+  margin: 0 auto;
+  padding: 100px;
+  background: rgb(78, 67, 67);
+
+  /* display: block; */
+  /* font-family: 20px;
+  font-weight: 400;
+  line-height: 32px;
+
+  visibility: visible; */
+}
+
+.weatherDayWrapper {
+  border: solid;
+
+  display: flex;
+  width: 100%;
+  background: white;
+}
+
+.dateWrapper {
+  border: solid;
+  width: 20%;
+  text-align: center;
+  background: rgb(68, 167, 129);
+}
+
+.graph {
+  width: 80%;
+  border: solid;
+}
+
+.seperator {
+  height: 10%;
+}

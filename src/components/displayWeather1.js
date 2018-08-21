@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Card, Paper, withStyles, Slide } from "@material-ui/core";
 import { Line } from "react-chartjs-2";
 import { groupBy5Days, KelvinToCelsius } from "../logic/logic";
+import { SSL_OP_PKCS1_CHECK_1 } from "constants";
 
 const styles = () => ({});
 
@@ -19,7 +20,7 @@ class DisplayWeather1 extends PureComponent {
     let time = [];
 
     return (
-      <div>
+      <div className="weatherList">
         {ListBy5days.map((day, i) => {
           //-----
 
@@ -66,7 +67,22 @@ class DisplayWeather1 extends PureComponent {
           // console.log(data.datasets[0].data, "data");
           // console.log(data.datasets[0].data, "temp");
 
-          return <Line data={data} />;
+          return (
+            <div>
+              <div className=" weatherDayWrapper">
+                <div className="dateWrapper">
+                  <h3 class="date">vr</h3>
+                  <h1 class="date">17</h1>
+                  <h2 class="date">aug</h2>
+                  <h4 class="date">2018</h4>
+                </div>
+                <div className="graph">
+                  <Line data={data} />
+                </div>
+              </div>
+              <div className="seperator">seperator</div>
+            </div>
+          );
           //return nothing
         })}
       </div>
