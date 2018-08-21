@@ -21,12 +21,18 @@ class DisplayWeather1 extends PureComponent {
         {ListBy5days.map((day, i) => {
           //-----
 
+          // beginAtZero:true,
+          // min: 0,
+          // max: 100
+
           let data = {
             scales: {
               yAxes: [
                 {
                   ticks: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    min: 20,
+                    max: 200
                   }
                 }
               ]
