@@ -7,25 +7,24 @@ import { groupBy5Days, KelvinToCelsius, data } from "../logic/logicConstants";
 
 class DisplayWeather1 extends PureComponent {
   // componentDidMount() {
-  //   if (this.props.weather === null) this.props.getWeather();
+  //   if (this.props.weatherDay === null) this.props.getWeather();
   //   // console.log("mounted", this.props.weather);
   // }
 
   render() {
+    if (!this.props.weatherDay) {
+      return (
+        <div>
+          <br />
+          please select a country
+        </div>
+      );
+    }
+
     const list = this.props.weather.list;
     const ListBy5days = groupBy5Days(list);
     const weatherDay = this.props.weatherDay;
 
-    console.log(list);
-
-    if (!this.props.weather) {
-      return (
-        <div>
-          <br />
-          Please slect a country
-        </div>
-      );
-    }
     return (
       <div className="weatherList">
         {ListBy5days.map((day, i) => {
