@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { getWeather } from "../actions/weather";
+import { getWeather, getWDayWeather } from "../actions/weather";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 import TextField from "material-ui/TextField";
@@ -17,6 +17,7 @@ class InputForm extends PureComponent {
     // console.log("handlesubmit");
     // console.log(this.state, "teeeee");
     this.props.getWeather(this.state);
+    this.props.getWDayWeather(this.state);
   };
 
   handleChange = e => {
@@ -63,5 +64,5 @@ const mapStateToProps = state => ({});
 
 export default connect(
   mapStateToProps,
-  { getWeather }
+  { getWeather, getWDayWeather }
 )(InputForm);
