@@ -1,24 +1,14 @@
 import React, { PureComponent } from "react";
 import { getWeather, getWDayWeather } from "../actions/weather";
 import { connect } from "react-redux";
-import { Card, Paper, withStyles, Slide } from "@material-ui/core";
+
 import { Line } from "react-chartjs-2";
-import { groupBy5Days, KelvinToCelsius, data } from "../logic/logicConstants";
+import { groupBy5Days, KelvinToCelsius } from "../logic/logicConstants";
 
 class DisplayWeather1 extends PureComponent {
-  // componentDidMount() {
-  //   if (this.props.weatherDay === null) this.props.getWeather();
-  //   // console.log("mounted", this.props.weather);
-  // }
-
   render() {
     if (!this.props.weatherDay) {
-      return (
-        <div>
-          <br />
-          please select a country
-        </div>
-      );
+      return <div>please select a country</div>;
     }
 
     const list = this.props.weather.list;
@@ -26,7 +16,7 @@ class DisplayWeather1 extends PureComponent {
     const weatherDay = this.props.weatherDay;
 
     return (
-      <div className="weatherList">
+      <div>
         {ListBy5days.map((day, i) => {
           let data = {
             scales: {
@@ -76,29 +66,31 @@ class DisplayWeather1 extends PureComponent {
           }
 
           return (
-            <div>
+            <div key="returnFromWeather">
               <div className=" weatherDayWrapper">
                 <div className="dateWrapper">
-                  <h3 class="date">{time[0]}</h3>
-                  <h1 class="date">{time[1]}</h1>
-                  <h2 class="date">{time[2]}</h2>
-                  <h4 class="date">{time[3]}</h4>
+                  <h3 key="dayOfWeek">{time[0]}</h3>
+                  <h1 key="month">{time[1]}</h1>
+                  <h2 key="dayMonth">{time[2]}</h2>
+                  <h4 key="year">{time[3]}</h4>
 
                   <img
                     src={`http://openweathermap.org/img/w/${condition}.png`}
                     alt="Smiley face"
                     height="62"
                     width="62"
+                    key={"icon"}
                   />
                 </div>
                 <div className="graph">
                   <Line data={data} />
                 </div>
               </div>
-              <div className="seperator">seperator</div>
+              <div className="seperator">
+                <br />
+              </div>
             </div>
           );
-          //return nothing
         })}
       </div>
     );
